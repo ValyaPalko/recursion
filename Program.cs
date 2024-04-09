@@ -1,14 +1,21 @@
-﻿// Задайте произвольный массив. Выведете его элементы, начиная с конца. Использовать рекурсию, не использовать циклы.
-void ArrayBackward(int[] array, int i = 0)
+﻿// Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+int AckermannFunction(int m, int n)
 {
-    if (i < 10)
+    if (m == 0)
     {
-        ArrayBackward(array, i + 1);
-        Console.WriteLine(array[i]);
+        return n + 1;
+    }
+    else
+    {
+        if (m > 0 && n == 0)
+        {
+            return AckermannFunction(m - 1, 1);
+        }
+        else
+        {
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+        }
     }
 }
-int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-ArrayBackward(array);
-
-
-
+int result = AckermannFunction(2, 2);
+Console.WriteLine(result);
